@@ -5,3 +5,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+User.destroy_all
+User.create({name: "Mark", date_joined: Date.today, address: "225 Bush St",
+	user_img_url: " ", password_digest: "1234", email: "user@domain.com", username: "markdsouza"})
+City.destroy_all
+City.create({name: "San Francisco", state: "CA", city_img_url: "https://dr5dymrsxhdzh.cloudfront.net/blog/images/a18498/2015/04/SanFrancisco.jpg"})

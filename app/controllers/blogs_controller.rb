@@ -3,14 +3,25 @@ class BlogsController < ApplicationController
 
     @blog = Blog.create(blog_params)
     @blog.user_id=cookies[:user_id]
-    @blog.city_id=6
+    @blog.city_id= cookies[:city_id]
     @blog.date_created=Date.today
     @blog.save
+    redirect_to @blog
+  end
+
+  def show
+    @blog = Blog.find_by_id(params[:id])
   end
 
   def new
     @blog=Blog.new
   end
+
+  def destroy
+    @blog = Blog.find_by_id(params[:id])
+    @blog.destroy
+    redirect_to user_path
+  end 
 
   private
 

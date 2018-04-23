@@ -1,3 +1,17 @@
-<div>
+
+<h1>
 	Welcome, <%= @user.name %>
-</div>
+	<%= @user.address %>
+	<%= @user.date_joined %>
+	<%= @user.username %>
+	<%= @user.created_at %>
+</h1>
+<p>
+<% @blogs.each do |blog| %> 
+Description <%= blog.description %>
+City id <%= blog.city_id %>
+Created at <%= blog.created_at %> 
+<%= link_to "Delete" , blog_delete_path(id: blog.id) , :method => :delete %>
+</p>
+
+<% end %>

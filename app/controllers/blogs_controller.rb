@@ -20,8 +20,14 @@ class BlogsController < ApplicationController
   def destroy
     @blog = Blog.find_by_id(params[:id])
     @blog.destroy
-    redirect_to user_path
+    redirect_to user_show_path(id: @blog.user_id)
   end 
+
+  def update
+    @blog = Blog.find_by_id(params[:id])
+    @blog.update
+    redirect_to blog_update_path(id: @blog.user_id)
+  end
 
   private
 

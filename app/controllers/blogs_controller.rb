@@ -1,13 +1,14 @@
 class BlogsController < ApplicationController
-  before_action :require_login, only: [:show]
+  # before_action :require_login, only: [:show]
   def create
-
-    @blog = Blog.create(blog_params)
-    @blog.user_id=cookies[:user_id]
-    @blog.city_id= cookies[:city_id]
-    @blog.date_created=Date.today
+    @user = current_user.id
+    @blog = City.find_by_id(params[:city_id])
+            .blogs
+            .new(post_params)
+    @blog.user_id = @user
     @blog.save
-    redirect_to @blog
+
+    redirect_to
   end
 
   def show
@@ -15,25 +16,42 @@ class BlogsController < ApplicationController
   end
 
   def new
-    @blog=Blog.new
+    @blog = Blog.new
+    @city = City.find_by_id(params[:city_id])
   end
 
   def destroy
+    @user = User.find_by_id(params[:user_id])
     @blog = Blog.find_by_id(params[:id])
     @blog.destroy
-    redirect_to user_show_path(id: @blog.user_id)
-  end 
+    redirect_to user_path(@user)
+  end
+
+  def edit
+    @user = User.find_by_id(params[:user_id])
+    @blog = Blog.find_by_id(params[:id])
+  end
 
   def update
+    update_params = params.require(:blog).permit(:description)
+    @user = User.find_by_id(params[:user_id]).id
     @blog = Blog.find_by_id(params[:id])
-    @blog.update
-    redirect_to blog_update_path(id: @blog.user_id)
+    @blog.update_attributes(update_params)
+    redirect_to user_path(@user)
+
+      # if @blog.update(blog_params)
+      #   #redirect_to user_path(@user)
+      # else
+      #   flash[:error]=blog.errors.full_messages.join(", ")
+      #   redirect_to edit_user_blog_path(@user, @blog)
+      #
+      # end
   end
 
   private
 
   def blog_params
-    params.require(:blog).permit(:description)
+    params.permit(:city_id,:description)
   end
 
 end

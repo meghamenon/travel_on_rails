@@ -4,21 +4,29 @@ class SessionsController < ApplicationController
 	end 
 
 	def create
-		user_params = params.require(:user).permit(:email, :password)
+		# user_params = params.require(:user).permit(:email, :password)
 		@user = User.confirm(user_params)
 		if @user
 			login(@user)
 			flash[:notice] = "Successfully logged in."
-			redirect_to login_path
+			redirect_to user_path(@user)
 		else
 			flash[:error] = "Incorrect email or password."
 			redirect_to login_path
 		end
 	end
-
+=begin
 	def destroy 
 		logout
 		flash[:notice] = "Successfully logged out"
 		redirect_to root_path
-	end  
+	end
+=end
+
+
+	private
+
+	def user_params
+		user_params = params.require(:user).permit(:email, :password)
+	end
 end

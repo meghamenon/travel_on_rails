@@ -14,8 +14,8 @@
 Description <%= blog.description %>
 City id <%= blog.city_id %>
 Created at <%= blog.created_at %> 
-<%= link_to "Delete" , blog_delete_path(id: blog.id) , :method => :delete %>
-<%= link_to "Edit" , blog_update_path(id: blog.id) , :method => :put %>
+<%= link_to "Delete" , user_blog_path(@user.id, blog.id) , :method => :delete %>
+<%= link_to "Edit" , edit_user_blog_path(@user.id, blog.id) %>
 </p>
 
 <% end %>

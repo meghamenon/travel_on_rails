@@ -3,7 +3,7 @@
 </h1>
 <%= image_tag("default.jpg") %>
 <p>
-	Address: <%= Use %> <br>
+	Address: <%= @user.address %> <br>
 	Date Joined: <%= @user.created_at %> <br>
 	Username: <%= @user.username %> <br>
 </p>
@@ -11,9 +11,8 @@
 <h4> My Blogs </h4>
 <p>
 <% @blogs.each do |blog| %> 
-Description <%= blog.description %>
-City id <%= blog.city_id %>
-Created at <%= blog.created_at %> 
+Description: <%= blog.description %><br>
+Created at <%= blog.created_at %><br>
 <%= link_to "Delete" , user_blog_path(@user.id, blog.id) , :method => :delete %>
 <%= link_to "Edit" , edit_user_blog_path(@user.id, blog.id) %>
 </p>

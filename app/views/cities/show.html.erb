@@ -1,3 +1,8 @@
-<h1><%=@city.name%></h1>
-<%= image_tag('sfo.jpg') %> <br>
 <%= link_to "Create New Post", new_city_blog_path(@city.id) %>
+<h1><%=@city.name%></h1>
+<img src = <%= image_path(@city.city_img_url) %> /><br>
+<% @blogs.each do |blog| %> 
+<h2><li> Post Title: <%= blog.description %> <br></li></h2>
+Created at <%= blog.created_at %> <br>
+By <%= blog.user.name %>
+<% end %>

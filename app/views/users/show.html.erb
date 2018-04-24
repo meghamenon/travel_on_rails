@@ -3,11 +3,11 @@
 </h1>
 <%= image_tag("default.jpg") %>
 <p>
-	Address: <%= @user.address %> <br>
-	Date Joined: <%= @user.date_joined %> <br>
+	Address: <%= Use %> <br>
+	Date Joined: <%= @user.created_at %> <br>
 	Username: <%= @user.username %> <br>
-	<%= @user.created_at %> <br>
 </p>
+
 <h4> My Blogs </h4>
 <p>
 <% @blogs.each do |blog| %> 

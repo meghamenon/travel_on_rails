@@ -1,6 +1,7 @@
 class BlogsController < ApplicationController
-  # before_action :require_login, only: [:show]
+  before_action :require_login, only: [:show]
   def create
+    post_params = params.require(:blog).permit(:city_id,:description)
     @user = current_user.id
     @blog = City.find_by_id(params[:city_id])
             .blogs
@@ -8,7 +9,7 @@ class BlogsController < ApplicationController
     @blog.user_id = @user
     @blog.save
 
-    redirect_to
+    redirect_to user_blog_path(@user, @blog)
   end
 
   def show

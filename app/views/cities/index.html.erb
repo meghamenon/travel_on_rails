@@ -1,6 +1,8 @@
 <ul>
   <% @cities.each do |city| %>   
-    <li><%= link_to city.name, city_path(:city_id) %></li>
-    <%= image_tag('sfo.jpg') %> <br>
+    <li><%= link_to city.name, city_path(city.id) %></li>
+    <img src = <%= image_path(city.city_img_url) %> />
+
+    <br>
   <% end %>
 </ul>

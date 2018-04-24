@@ -4,7 +4,7 @@ class CitiesController < ApplicationController
 	end
   def show
     @city=City.find_by_id(params[:id])
-    cookies[:city_id]= @city.id
+    @blogs = @city.blogs
   end
 
   def new

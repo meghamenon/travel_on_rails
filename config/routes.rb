@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
 	
 	root to: 'homepage#index'
-	get '/users/new', to: 'users#new'
+	get '/users/new', to: 'users#new', as: "user_new"
 	post '/users', to: 'users#create'
-	get '/login', to: 'sessions#new'
+	get '/login', to: 'sessions#new', as: "login"
 	post '/login', to: 'sessions#create'
 	get '/users', to: 'users#index'
 	get '/users/:id', to: 'users#show', as: 'user_show'
@@ -16,7 +16,8 @@ Rails.application.routes.draw do
 	put '/blogs/:id', to: 'blogs#update', as: 'blog_update'
 	# get '/profile/:id', to: 'profile#show'
 	delete '/blogs/:id', to: 'blogs#destroy', as: 'blog_delete'
-	get '/cities/:id', to: 'cities#show'
+	get '/cities', to: 'cities#index'
+	get '/cities/:id', to: 'cities#show', as: 'city'
 	#put '/profile/:id', to: 'profile#update'
 	# get '/cities/:id/blogs', to: 'blog#index'
 	# get '/user/:id/blogs', to: 'blog#index'

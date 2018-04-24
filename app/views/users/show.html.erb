@@ -1,11 +1,14 @@
-
 <h1>
-	Welcome, <%= @user.name %>
-	<%= @user.address %>
-	<%= @user.date_joined %>
-	<%= @user.username %>
-	<%= @user.created_at %>
+	Welcome, <%= @user.name %><br>
 </h1>
+<%= image_tag("default.jpg") %>
+<p>
+	Address: <%= @user.address %> <br>
+	Date Joined: <%= @user.date_joined %> <br>
+	Username: <%= @user.username %> <br>
+	<%= @user.created_at %> <br>
+</p>
+<h4> My Blogs </h4>
 <p>
 <% @blogs.each do |blog| %> 
 Description <%= blog.description %>

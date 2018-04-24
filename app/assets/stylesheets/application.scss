@@ -13,3 +13,21 @@
  */
  @import "bootstrap";
  @import "homepage";
+
+ .navi {
+	 font-family: Snell Roundhand;
+	 opacity: 0.5;
+	 font-weight: 400;
+ }
+
+ .nav-link{
+ 	padding: 0px 10px;
+  word-wrap: normal;
+  display: inline-block;
+ }
+
+ .link-to-text-color { 
+ 	color: white;
+ 	text-decoration: none !important;
+ }
+

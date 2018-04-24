@@ -3,23 +3,24 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 $font-stack:    Helvetica, sans-serif;
-body {
-  background: {
-    width: 100%;
-    height: 100%;
-    size: cover;
-  }
+
+
+.home{
+
+  background-image: url(travel1.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
-h1 {
-  color: black;
+.home h1 {
+  color: white;
+  font-weight: 900;
   font-family: Snell Roundhand, cursive;
   font-size: 90px;
   left: 0;
+  margin-top: 100px;
   line-height: 200px;
-  margin-top: -100px;
-  position: absolute;
   text-align: center;
-  top: 50%;
   width: 100%;
   }
+

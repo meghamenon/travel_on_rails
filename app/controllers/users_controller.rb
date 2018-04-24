@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+	before_action :require_login, only: [:show]
 	def index
 		@users = User.all
 	end 
@@ -10,4 +11,14 @@ class UsersController < ApplicationController
 		cookies[:user_id]=@user.id
 		@blogs = Blog.where(["user_id = ?",@user.id]).select("*")
 	end 
+
+	def create 
+		@user = User.create(user_params)
+		login(@user)
+		redirect_to 
+	end 
+
+	def user_params
+		params.require(:user).permit(:name, :email, :password)
+	end
 end

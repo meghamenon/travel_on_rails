@@ -14,5 +14,11 @@ class SessionsController < ApplicationController
 			flash[:error] = "Incorrect email or password."
 			redirect_to login_path
 		end
-	end 
+	end
+
+	def destroy 
+		logout
+		flash[:notice] = "Successfully logged out"
+		redirect_to root_path
+	end  
 end

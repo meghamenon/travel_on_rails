@@ -1,4 +1,5 @@
 class BlogsController < ApplicationController
+  before_action :require_login, only: [:show]
   def create
 
     @blog = Blog.create(blog_params)

@@ -13,4 +13,4 @@ User.create({name: "Mark", date_joined: Date.today, address: "225 Bush St",
 City.destroy_all
 City.create({name: "San Francisco", state: "CA", city_img_url: "https://dr5dymrsxhdzh.cloudfront.net/blog/images/a18498/2015/04/SanFrancisco.jpg"})
 =end
-Blog.create(user_id:8,city_id:6,description:"First post about San Francisco",date_created:Date.today)
+City.create({name: "New York City", state: "NY", city_img_url: "https://dr5dymrsxhdzh.cloudfront.net/blog/images/a18498/2015/04/SanFrancisco.jpg"})
